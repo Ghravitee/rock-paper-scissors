@@ -57,7 +57,10 @@ button {
 .winner-glow {
   position: absolute;
   border-radius: 9999px;
+
   z-index: 0;
+  width: 23rem;
+  height: 23rem;
 }
 
 .winner-glow::before,
@@ -75,11 +78,6 @@ button {
   background: rgba(59, 67, 99, 0.18);
 }
 
-.winner-glow {
-  width: 23rem;
-  height: 23rem;
-}
-
 .winner-glow::before {
   width: 30rem;
   height: 30rem;
@@ -91,3 +89,37 @@ button {
   height: 38rem;
   background: rgba(59, 67, 99, 0.22);
 }
+
+/* 🔹 Mobile adjustments (<= 640px) */
+@media (max-width: 640px) {
+  .winner-glow {
+    width: 13rem;
+    height: 13rem;
+  }
+  .winner-glow::before {
+    width: 18rem;
+    height: 18rem;
+  }
+  .winner-glow::after {
+    width: 23rem;
+    height: 23rem;
+  }
+}
+
+/* 🔹 Tablet adjustments (641px–1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .winner-glow {
+    width: 18rem;
+    height: 18rem;
+  }
+  .winner-glow::before {
+    width: 24rem;
+    height: 24rem;
+  }
+  .winner-glow::after {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+/* Desktop stays with the defaults (>= 1025px) */

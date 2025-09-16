@@ -121,7 +121,11 @@ const App = () => {
         </div>
 
         {/* Game Board */}
-        <div className="lg:mt-[9rem] mt-[8rem]">
+        <div
+          className={`${
+            result || loading ? "lg:mt-[2rem]" : "mt-[5rem] lg:mt-[8rem]"
+          } mt-[2rem]`}
+        >
           {!userChoice ? (
             <div className="relative triangle lg:w-[60%] w-[60%] mx-auto h-[200px] max-w-[300px] lg:max-w-[400px]">
               {choices.map((choice) => (
@@ -152,37 +156,106 @@ const App = () => {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center mt-10 gap-4 max-w-[1200px] mx-auto">
-              {/* User Pick */}
-
-              <div className="flex flex-col space-y-10 relative z-20">
-                <h2 className="uppercase font-bold text-white tracking-widest text-[1.5rem] text-center relative z-20">
-                  You Picked
-                </h2>
-
-                <div className="relative flex items-center justify-center">
-                  {result === "win" && <div className="winner-glow"></div>}
-                  <div
-                    className={`size-[17rem] rounded-full border-[1.8rem] relative z-10 ${
-                      getChoiceData(userChoice)?.border
-                    } flex items-center justify-center ${
-                      getChoiceData(userChoice)?.shadow
-                    }`}
-                  >
-                    <div className="bg-white size-[14rem] rounded-full border-t-[.5rem] border-gray-300 flex items-center justify-center relative z-10">
-                      <img
-                        src={getChoiceData(userChoice)?.image}
-                        alt={userChoice ?? ""}
-                        className="size-[5rem]"
-                      />
+            <div className="flex flex-col">
+              <div className="flex items-center justify-center mt-10 gap-4 max-w-[1200px] mx-auto">
+                {/* User Pick */}
+                <div className="flex flex-col-reverse lg:flex-col gap-4 relative z-20">
+                  <h2 className="uppercase font-bold text-white tracking-widest text-[1rem] lg:text-[1.5rem] text-center relative z-20">
+                    You Picked
+                  </h2>
+                  <div className="relative flex items-center justify-center">
+                    {result === "win" && <div className="winner-glow"></div>}
+                    <div
+                      className={`lg:size-[17rem] size-[8rem] 
+              rounded-full 
+              lg:border-[1.8rem] border-[1rem] relative z-10 ${
+                getChoiceData(userChoice)?.border
+              } flex items-center justify-center ${
+                        getChoiceData(userChoice)?.shadow
+                      }`}
+                    >
+                      <div
+                        className="bg-white lg:size-[14rem] size-[6rem] 
+                rounded-full 
+                lg:border-t-[.5rem] border-t-[.3rem] border-gray-300 flex items-center justify-center relative z-10"
+                      >
+                        <img
+                          src={getChoiceData(userChoice)?.image}
+                          alt={userChoice ?? ""}
+                          className="lg:size-[5rem] size-[3rem]"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
+                {/* Result */}
+                <div
+                  className={`lg:flex flex-col items-center hidden gap-4 relative z-20 ${
+                    loading ? "" : "px-16"
+                  }`}
+                >
+                  {loading ? (
+                    <p className="text-white uppercase font-semibold hidden"></p>
+                  ) : (
+                    <>
+                      <p className="text-white text-[3rem] font-bold uppercase">
+                        {result === "win"
+                          ? "You Win"
+                          : result === "lose"
+                          ? "You Lose"
+                          : "Draw"}
+                      </p>
+                      <button
+                        onClick={playAgain}
+                        className="bg-white text-Navy-900 hover:text-Red-600 transition-all duration-300 px-6 py-2 rounded-lg font-semibold uppercase tracking-widest w-full"
+                      >
+                        Play Again
+                      </button>
+                    </>
+                  )}
+                </div>
+                {/* Computer Pick */}
+                {/* Computer Pick */}
+                <div className="flex flex-col-reverse lg:flex-col items-center gap-6">
+                  <h2 className="uppercase font-bold text-white tracking-widest text-[1rem] lg:text-[1.5rem] text-center relative z-20">
+                    The House Picked
+                  </h2>
+                  {loading ? (
+                    // loader circle
+                    <div className="lg:size-[17rem] size-[8rem] rounded-full bg-Navy-900 flex items-center justify-center">
+                      <div className="bg-Blue-900 size-[6.7rem] rounded-full" />
+                    </div>
+                  ) : (
+                    <div className="relative flex items-center justify-center">
+                      {result === "lose" && <div className="winner-glow"></div>}
+                      <div
+                        className={`lg:size-[17rem] size-[8rem] 
+              rounded-full 
+              lg:border-[1.8rem] border-[1rem] relative z-20 ${
+                getChoiceData(computerChoice)?.border
+              } flex items-center justify-center ${
+                          getChoiceData(computerChoice)?.shadow
+                        }`}
+                      >
+                        <div
+                          className="bg-white lg:size-[14rem] size-[6rem] 
+                rounded-full 
+                lg:border-t-[.5rem] border-t-[.3rem] border-gray-300 flex items-center justify-center relative z-10"
+                        >
+                          <img
+                            src={getChoiceData(computerChoice)?.image}
+                            alt={computerChoice ?? ""}
+                            className="lg:size-[5rem] size-[3rem]"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-
-              {/* Result */}
+              {/*  */}
               <div
-                className={`flex flex-col items-center gap-4 relative z-20 ${
+                className={`flex flex-col items-center gap-2 lg:hidden relative z-20 mt-6 ${
                   loading ? "" : "px-16"
                 }`}
               >
@@ -190,7 +263,7 @@ const App = () => {
                   <p className="text-white uppercase font-semibold hidden"></p>
                 ) : (
                   <>
-                    <p className="text-white text-[3rem] font-bold uppercase">
+                    <p className="text-white text-[2.5rem] lg:text-[3rem] font-bold uppercase">
                       {result === "win"
                         ? "You Win"
                         : result === "lose"
@@ -199,45 +272,11 @@ const App = () => {
                     </p>
                     <button
                       onClick={playAgain}
-                      className="bg-white text-Navy-900 hover:text-Red-600 transition-all duration-300 px-6 py-2 rounded-lg font-semibold uppercase tracking-widest w-full"
+                      className="bg-white text-Navy-900 hover:text-Red-600 transition-all duration-300 px-4 py-2 rounded-lg font-semibold uppercase tracking-widest w-full"
                     >
                       Play Again
                     </button>
                   </>
-                )}
-              </div>
-
-              {/* Computer Pick */}
-              {/* Computer Pick */}
-              <div className="flex flex-col items-center space-y-10">
-                <h2 className="uppercase font-bold text-white tracking-widest text-[1.5rem] text-center relative z-20">
-                  The House Picked
-                </h2>
-
-                {loading ? (
-                  // loader circle
-                  <div className="size-[17rem] rounded-full bg-Navy-900 flex items-center justify-center">
-                    <div className="bg-Blue-900 size-[6.7rem] rounded-full" />
-                  </div>
-                ) : (
-                  <div className="relative flex items-center justify-center">
-                    {result === "lose" && <div className="winner-glow"></div>}
-                    <div
-                      className={`size-[17rem] rounded-full border-[1.8rem] relative z-20 ${
-                        getChoiceData(computerChoice)?.border
-                      } flex items-center justify-center ${
-                        getChoiceData(computerChoice)?.shadow
-                      }`}
-                    >
-                      <div className="bg-white size-[14rem] rounded-full border-t-[.5rem] border-gray-300 flex items-center justify-center relative z-10">
-                        <img
-                          src={getChoiceData(computerChoice)?.image}
-                          alt={computerChoice ?? ""}
-                          className="size-[5rem]"
-                        />
-                      </div>
-                    </div>
-                  </div>
                 )}
               </div>
             </div>

@@ -121,7 +121,7 @@ const App = () => {
         </div>
 
         {/* Game Board */}
-        <div className="lg:mt-24 mt-16">
+        <div className="lg:mt-[9rem] mt-[8rem]">
           {!userChoice ? (
             <div className="relative triangle lg:w-[60%] w-[60%] mx-auto h-[200px] max-w-[300px] lg:max-w-[400px]">
               {choices.map((choice) => (

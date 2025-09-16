@@ -96,7 +96,7 @@ const App = () => {
     choices.find((c) => c.name === name);
 
   return (
-    <main className="lg:py-10 pb-16 px-4 min-h-screen relative flex flex-col ">
+    <main className="lg:py-10 pt-6 pb-16 px-4 min-h-screen relative flex flex-col ">
       <section className="flex-1 w-full">
         {/* Title and Score */}
         <div className="max-w-[650px] mx-auto  py-4 pr-4 pl-6 border-[3px] border-white/50 rounded-xl flex justify-between items-center relative z-20">

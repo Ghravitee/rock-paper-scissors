@@ -96,7 +96,7 @@ const App = () => {
     choices.find((c) => c.name === name);
 
   return (
-    <main className="lg:py-10 py-6 px-4 min-h-screen relative flex flex-col ">
+    <main className="py-10 px-4 min-h-screen relative flex flex-col ">
       <section className="flex-1 w-full">
         {/* Title and Score */}
         <div className="max-w-[650px] mx-auto  py-4 pr-4 pl-6 border-[3px] border-white/50 rounded-xl flex justify-between items-center relative z-20">
@@ -121,7 +121,7 @@ const App = () => {
         </div>
 
         {/* Game Board */}
-        <div className="lg:mt-[9rem] mt-[6rem]">
+        <div className="lg:mt-[9rem] mt-[8rem]">
           {!userChoice ? (
             <div className="relative triangle lg:w-[60%] w-[60%] mx-auto h-[200px] max-w-[300px] lg:max-w-[400px]">
               {choices.map((choice) => (

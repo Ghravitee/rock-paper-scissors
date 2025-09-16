@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --Gold-500: hsl(39, 89%, 49%);
+  --Gold-600: hsl(28, 76%, 44%);
+  --Blue-500: hsl(230, 89%, 62%);
+  --Blue-700: hsl(229, 64%, 46%);
+  --Red-600: hsl(349, 71%, 52%);
+  --Red-800: hsl(347, 75%, 35%);
+  --Purple-600: hsl(261, 73%, 60%);
+  --Purple-700: hsl(261, 51%, 44%);
+  --Light-Blue-400: hsl(189, 59%, 53%);
+  --Light-Blue-500: hsl(194, 58%, 42%);
+  --Navy-900: rgb(59, 67, 99);
+  --Gray-600: lch(36.63% 13.07 295.68);
+  --Radial-Gradient: radial-gradient(
+    circle,
+    hsl(214, 47%, 23%),
+    hsl(237, 48%, 15%)
+  );
+}
+
+@theme {
+  --color-Gold-500: var(--Gold-500);
+  --color-Gold-600: var(--Gold-600);
+  --color-Blue-500: var(--Blue-500);
+  --color-Blue-700: var(--Blue-700);
+  --color-Red-600: var(--Red-600);
+  --color-Red-800: var(--Red-800);
+  --color-Purple-600: var(--Purple-600);
+  --color-Purple-700: var(--Purple-700);
+  --color-Light-Blue-400: var(--Light-Blue-400);
+  --color-Light-Blue-500: var(--Light-Blue-500);
+  --color-Navy-900: var(--Navy-900);
+  --color-Gray-600: var(--Gray-600);
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: var(--Radial-Gradient);
+}
+
+button {
+  cursor: pointer;
+}
+
+.triangle {
+  background-image: url("../src/images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/* Winner Glow Effect */
+.winner-glow {
+  position: absolute;
+  border-radius: 9999px;
+  z-index: 0;
+}
+
+.winner-glow::before,
+.winner-glow::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  inset: -8rem;
+  margin: auto;
+}
+
+.winner-glow,
+.winner-glow::before,
+.winner-glow::after {
+  background: rgba(59, 67, 99, 0.18);
+}
+
+.winner-glow {
+  width: 23rem;
+  height: 23rem;
+}
+
+.winner-glow::before {
+  width: 30rem;
+  height: 30rem;
+  background: rgba(59, 67, 99, 0.2);
+}
+
+.winner-glow::after {
+  width: 38rem;
+  height: 38rem;
+  background: rgba(59, 67, 99, 0.22);
+}
